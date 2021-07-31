@@ -80,7 +80,6 @@ namespace SimpleNotes
             // 
             this.notesLayoutPanel.AutoScroll = true;
             this.notesLayoutPanel.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.notesLayoutPanel.FlowDirection = System.Windows.Forms.FlowDirection.TopDown;
             this.notesLayoutPanel.Location = new System.Drawing.Point(3, 16);
             this.notesLayoutPanel.Name = "notesLayoutPanel";
             this.notesLayoutPanel.Size = new System.Drawing.Size(190, 322);

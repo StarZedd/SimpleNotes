@@ -110,25 +110,22 @@ namespace SimpleNotes
             // 
             this.groupBox2.Controls.Add(this.NoteContentTextBox);
             this.groupBox2.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.groupBox2.ForeColor = System.Drawing.SystemColors.ControlText;
             this.groupBox2.Location = new System.Drawing.Point(8, 45);
             this.groupBox2.Name = "groupBox2";
             this.groupBox2.Size = new System.Drawing.Size(335, 141);
             this.groupBox2.TabIndex = 4;
             this.groupBox2.TabStop = false;
-            this.groupBox2.Text = "Содержимое заметки (0/2000)";
+            this.groupBox2.Text = "Содержимое заметки";
             // 
             // NoteContentTextBox
             // 
             this.NoteContentTextBox.Dock = System.Windows.Forms.DockStyle.Fill;
             this.NoteContentTextBox.Location = new System.Drawing.Point(3, 16);
-            this.NoteContentTextBox.MaxLength = 3000;
             this.NoteContentTextBox.Name = "NoteContentTextBox";
             this.NoteContentTextBox.ScrollBars = System.Windows.Forms.RichTextBoxScrollBars.ForcedVertical;
             this.NoteContentTextBox.Size = new System.Drawing.Size(329, 122);
             this.NoteContentTextBox.TabIndex = 0;
             this.NoteContentTextBox.Text = "";
-            this.NoteContentTextBox.TextChanged += new System.EventHandler(this.NoteContentTextBox_TextChanged);
             // 
             // CreateNoteForm
             // 
