@@ -14,9 +14,16 @@ namespace SimpleNotes
         [STAThread]
         static void Main()
         {
-            Application.EnableVisualStyles();
-            Application.SetCompatibleTextRenderingDefault(false);
-            Application.Run(new MainForm());
+            try
+            {
+                Application.EnableVisualStyles();
+                Application.SetCompatibleTextRenderingDefault(false);
+                Application.Run(new MainForm());
+            }
+            catch(Exception e)
+            {
+                MessageBox.Show($"В приложении произошла неустранимая ошибка\n{e.Message} в {e.TargetSite.Name}", "Ошибка", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
         }
     }
 }

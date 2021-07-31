@@ -20,16 +20,16 @@ namespace SimpleNotes
             NotesFolder = Directory.CreateDirectory(Environment.GetFolderPath(Environment.SpecialFolder.ApplicationData) + "\\SimpleNotes");
             // Смотрим на наличие заметок в папке %APPDATA%/Roaming
             // Заметка = Файл с расширением .snf (Simple Note File)
-            foreach (string i in Directory.GetFiles(NotesFolder.FullName, "*.snf"))
+            foreach (string i in Directory.GetFiles(NotesFolder.FullName, "??*.snf"))
             {
                 // Каждая заметка имеет свою кнопку в панели слева
                 // Имя файла (без расширения) = имя кнопки - заголовок
                 // Содержимое файла = тэг внутри кнопки - сама заметка
                 Button NoteButton = new Button
                 {
-                    Text = i.Substring(i.LastIndexOf('\\') + 1, i.Length - i.LastIndexOf('.') + 1),
+                    Text = i.Substring(i.LastIndexOf('\\') + 1, i.LastIndexOf('.') - i.LastIndexOf('\\') - 1),
                     Tag = File.ReadAllText(i),
-                    Size = new Size(158, 23),
+                    Size = new Size(165, 23),
                 };
                 NoteButton.Click += NoteButton_Click;
                 notesLayoutPanel.Controls.Add(NoteButton);
@@ -41,7 +41,7 @@ namespace SimpleNotes
             // Массив из двух строк
             // Первая - Заголовок
             // Вторая - Содержимое заметки
-            string[] container = new string[2];
+            string[] container = new string[2]{"", ""};
             // Создаём форму для создания новой заметки
             // Код останавливает выполнение до закрытия окна
             DialogResult res = new CreateNoteForm(container).ShowDialog();
@@ -52,12 +52,13 @@ namespace SimpleNotes
                 {
                     Text = container[0],
                     Tag = container[1],
-                    Size = new Size(158, 23),
+                    Size = new Size(165, 23),
                 };
                 NoteButton.Click += NoteButton_Click;
                 notesLayoutPanel.Controls.Add(NoteButton);
-                // И в виде файла
-                File.WriteAllText($"{NotesFolder.FullName}\\{container[0]}.snf", container[1]);
+                // Заметка в виде файла создаётся в CreateNoteForm
+                // Имитируем клик по кнопке, чтобы вызвать отображение заметки
+                NoteButton.PerformClick();
             }
         }
 
@@ -81,7 +82,6 @@ namespace SimpleNotes
             if (DialogResult.Yes == MessageBox.Show($"Действительно удалить запись \"{SelectedNote.Text}\"?", "Подтверждение", MessageBoxButtons.YesNo, MessageBoxIcon.Warning))
             {
                 // Удаляем файл с заметкой и саму кнопку
-                MessageBox.Show($"{NotesFolder.FullName}\\{SelectedNote.Text}.snf");
                 File.Delete($"{NotesFolder.FullName}\\{SelectedNote.Text}.snf");
                 SelectedNote.Dispose();
                 // После чего снова ставим состояние на "Заметка не выбрана"
@@ -98,7 +98,22 @@ namespace SimpleNotes
 
         private void EditNoteButton_Click(object sender, EventArgs e)
         {
-            MessageBox.Show("В разработке", "Скоро", MessageBoxButtons.OK, MessageBoxIcon.Information);
+            string[] container = new string[2] 
+            { 
+                SelectedNote.Text, 
+                SelectedNote.Tag.ToString() 
+            };
+            // Создаём форму для редактирования заметки
+            // Код останавливает выполнение до закрытия окна
+            DialogResult res = new CreateNoteForm(container, true).ShowDialog();
+            if (res == DialogResult.OK)
+            {
+                // Редактируем текущую заметку-кнопку
+                SelectedNote.Tag = container[1];
+                // Заметка в виде файла редактируется в CreateNoteForm
+                // Имитируем клик по кнопке, чтобы вызвать отображение заметки
+                SelectedNote.PerformClick();
+            }
         }
     }
 }
