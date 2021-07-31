@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Drawing;
 using System.IO;
 using System.Text.RegularExpressions;
 using System.Windows.Forms;
@@ -41,16 +42,21 @@ namespace SimpleNotes
             }
             if (NoteContentTextBox.TextLength < 3)
             {
-                MessageBox.Show("Заметка слишком короткая", "Ошибка", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                MessageBox.Show("Заметка слишком короткая", "Предупреждение", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                 return;
+            }
+            if (NoteContentTextBox.TextLength > 2000)
+            {
+                if(DialogResult.No == MessageBox.Show("Заметка слишком длинная! Рекомендуемый размер - до 2000 символов\n\nВсё равно создать заметку?", "Ошибка", MessageBoxButtons.YesNo, MessageBoxIcon.Warning))
+                    return;
             }
             // Проверка на корректность названия заметки.
             // Необходимость такой заметки заключается в том, что название заметки - это имя файла.
             // Он не может начинаться или заканчиваться на пробел, пустой символ, и не может содержать в себе спецсимволы
-            Regex name = new Regex("^\\S\\w+\\S$", RegexOptions.Compiled | RegexOptions.Singleline | RegexOptions.IgnoreCase);
+            Regex name = new Regex("^\\S[\\w, \\s]+\\S$", RegexOptions.Compiled | RegexOptions.Singleline | RegexOptions.IgnoreCase);
             if (!name.IsMatch(NoteNameTextBox.Text))
             {
-                MessageBox.Show("Недопустимое название заметки.\nРазрешено использование только букв и цифр", "Ошибка", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                MessageBox.Show("Недопустимое название заметки.\nРазрешено использование только букв, цифр и пробелов", "Ошибка", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                 return;
             }
             // Записываем данные в контейнер, где они будут использованы в главной форме
@@ -85,5 +91,22 @@ namespace SimpleNotes
         }
 
         private void NoteNameTextBox_TextChanged(object sender, EventArgs e) => groupBox1.Text = $"Название заметки ({NoteNameTextBox.TextLength}/24)";
+
+        private void NoteContentTextBox_TextChanged(object sender, EventArgs e)
+        {
+            groupBox2.Text = $"Содержание заметки ({NoteContentTextBox.TextLength}/2000)";
+            if (NoteContentTextBox.TextLength >= 2999)
+            {
+                groupBox2.ForeColor = Color.Red;
+            }
+            else if (NoteContentTextBox.TextLength >= 2000)
+            {
+                groupBox2.ForeColor = Color.DarkOrange;
+            }
+            else
+            {
+                groupBox2.ForeColor = Color.Black;
+            }
+        }
     }
 }

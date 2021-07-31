@@ -80,6 +80,7 @@ namespace SimpleNotes
             // 
             this.notesLayoutPanel.AutoScroll = true;
             this.notesLayoutPanel.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.notesLayoutPanel.FlowDirection = System.Windows.Forms.FlowDirection.TopDown;
             this.notesLayoutPanel.Location = new System.Drawing.Point(3, 16);
             this.notesLayoutPanel.Name = "notesLayoutPanel";
             this.notesLayoutPanel.Size = new System.Drawing.Size(190, 322);
@@ -101,7 +102,7 @@ namespace SimpleNotes
             // splitContainer2.Panel2
             // 
             splitContainer2.Panel2.Controls.Add(splitContainer1);
-            splitContainer2.Size = new System.Drawing.Size(326, 281);
+            splitContainer2.Size = new System.Drawing.Size(328, 281);
             splitContainer2.SplitterDistance = 245;
             splitContainer2.TabIndex = 2;
             // 
@@ -113,7 +114,7 @@ namespace SimpleNotes
             this.NoteTextBox.Location = new System.Drawing.Point(0, 0);
             this.NoteTextBox.Name = "NoteTextBox";
             this.NoteTextBox.ScrollBars = System.Windows.Forms.RichTextBoxScrollBars.ForcedVertical;
-            this.NoteTextBox.Size = new System.Drawing.Size(326, 245);
+            this.NoteTextBox.Size = new System.Drawing.Size(328, 245);
             this.NoteTextBox.TabIndex = 0;
             this.NoteTextBox.Text = "";
             // 
@@ -132,7 +133,7 @@ namespace SimpleNotes
             // splitContainer1.Panel2
             // 
             splitContainer1.Panel2.Controls.Add(this.DeleteNoteButton);
-            splitContainer1.Size = new System.Drawing.Size(326, 32);
+            splitContainer1.Size = new System.Drawing.Size(328, 32);
             splitContainer1.SplitterDistance = 161;
             splitContainer1.TabIndex = 1;
             // 
@@ -155,7 +156,7 @@ namespace SimpleNotes
             this.DeleteNoteButton.ForeColor = System.Drawing.Color.DarkRed;
             this.DeleteNoteButton.Location = new System.Drawing.Point(0, 0);
             this.DeleteNoteButton.Name = "DeleteNoteButton";
-            this.DeleteNoteButton.Size = new System.Drawing.Size(161, 32);
+            this.DeleteNoteButton.Size = new System.Drawing.Size(163, 32);
             this.DeleteNoteButton.TabIndex = 0;
             this.DeleteNoteButton.Text = "Удалить эту заметку";
             this.DeleteNoteButton.UseVisualStyleBackColor = true;
@@ -167,7 +168,7 @@ namespace SimpleNotes
             this.CreateNoteButton.Location = new System.Drawing.Point(0, 0);
             this.CreateNoteButton.Margin = new System.Windows.Forms.Padding(6);
             this.CreateNoteButton.Name = "CreateNoteButton";
-            this.CreateNoteButton.Size = new System.Drawing.Size(338, 31);
+            this.CreateNoteButton.Size = new System.Drawing.Size(340, 31);
             this.CreateNoteButton.TabIndex = 1;
             this.CreateNoteButton.Text = "Создать новую заметку";
             this.CreateNoteButton.UseVisualStyleBackColor = true;
@@ -181,7 +182,7 @@ namespace SimpleNotes
             this.NoteGroupBox.Margin = new System.Windows.Forms.Padding(6);
             this.NoteGroupBox.Name = "NoteGroupBox";
             this.NoteGroupBox.Padding = new System.Windows.Forms.Padding(6);
-            this.NoteGroupBox.Size = new System.Drawing.Size(338, 306);
+            this.NoteGroupBox.Size = new System.Drawing.Size(340, 306);
             this.NoteGroupBox.TabIndex = 2;
             this.NoteGroupBox.TabStop = false;
             this.NoteGroupBox.Text = "Заметка не выбрана";
@@ -202,7 +203,7 @@ namespace SimpleNotes
             // splitContainer3.Panel2
             // 
             this.splitContainer3.Panel2.Controls.Add(this.CreateNoteButton);
-            this.splitContainer3.Size = new System.Drawing.Size(338, 341);
+            this.splitContainer3.Size = new System.Drawing.Size(340, 341);
             this.splitContainer3.SplitterDistance = 306;
             this.splitContainer3.TabIndex = 3;
             // 
@@ -221,7 +222,7 @@ namespace SimpleNotes
             // splitContainer4.Panel2
             // 
             this.splitContainer4.Panel2.Controls.Add(this.splitContainer3);
-            this.splitContainer4.Size = new System.Drawing.Size(538, 341);
+            this.splitContainer4.Size = new System.Drawing.Size(540, 341);
             this.splitContainer4.SplitterDistance = 196;
             this.splitContainer4.TabIndex = 4;
             // 
@@ -229,7 +230,7 @@ namespace SimpleNotes
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(550, 350);
+            this.ClientSize = new System.Drawing.Size(552, 350);
             this.Controls.Add(this.splitContainer4);
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.MaximizeBox = false;
