@@ -1,18 +1,15 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
 using System.Windows.Forms;
 
 namespace SimpleNotes
 {
-    static class Program
+    internal static class Program
     {
         /// <summary>
         /// Главная точка входа для приложения.
         /// </summary>
         [STAThread]
-        static void Main()
+        private static void Main()
         {
             try
             {
@@ -20,7 +17,7 @@ namespace SimpleNotes
                 Application.SetCompatibleTextRenderingDefault(false);
                 Application.Run(new MainForm());
             }
-            catch(Exception e)
+            catch (Exception e)
             {
                 MessageBox.Show($"В приложении произошла неустранимая ошибка\n{e.Message} в {e.TargetSite.Name}", "Ошибка", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }

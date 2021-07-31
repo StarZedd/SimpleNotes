@@ -49,7 +49,7 @@ namespace SimpleNotes
             this.CreateNoteButton.Dock = System.Windows.Forms.DockStyle.Fill;
             this.CreateNoteButton.Location = new System.Drawing.Point(0, 0);
             this.CreateNoteButton.Name = "CreateNoteButton";
-            this.CreateNoteButton.Size = new System.Drawing.Size(224, 36);
+            this.CreateNoteButton.Size = new System.Drawing.Size(216, 36);
             this.CreateNoteButton.TabIndex = 0;
             this.CreateNoteButton.Text = "Готово";
             this.CreateNoteButton.UseVisualStyleBackColor = true;
@@ -61,7 +61,7 @@ namespace SimpleNotes
             this.CancelNoteButton.ForeColor = System.Drawing.Color.Red;
             this.CancelNoteButton.Location = new System.Drawing.Point(0, 0);
             this.CancelNoteButton.Name = "CancelNoteButton";
-            this.CancelNoteButton.Size = new System.Drawing.Size(119, 36);
+            this.CancelNoteButton.Size = new System.Drawing.Size(115, 36);
             this.CancelNoteButton.TabIndex = 1;
             this.CancelNoteButton.Text = "Отмена";
             this.CancelNoteButton.UseVisualStyleBackColor = true;
@@ -71,9 +71,9 @@ namespace SimpleNotes
             // 
             this.groupBox1.Controls.Add(this.NoteNameTextBox);
             this.groupBox1.Dock = System.Windows.Forms.DockStyle.Top;
-            this.groupBox1.Location = new System.Drawing.Point(0, 0);
+            this.groupBox1.Location = new System.Drawing.Point(8, 3);
             this.groupBox1.Name = "groupBox1";
-            this.groupBox1.Size = new System.Drawing.Size(347, 42);
+            this.groupBox1.Size = new System.Drawing.Size(335, 42);
             this.groupBox1.TabIndex = 2;
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "Название заметки (0/24)";
@@ -84,14 +84,15 @@ namespace SimpleNotes
             this.NoteNameTextBox.Location = new System.Drawing.Point(3, 16);
             this.NoteNameTextBox.MaxLength = 24;
             this.NoteNameTextBox.Name = "NoteNameTextBox";
-            this.NoteNameTextBox.Size = new System.Drawing.Size(341, 20);
+            this.NoteNameTextBox.Size = new System.Drawing.Size(329, 20);
             this.NoteNameTextBox.TabIndex = 0;
             this.NoteNameTextBox.TextChanged += new System.EventHandler(this.NoteNameTextBox_TextChanged);
             // 
             // splitContainer1
             // 
             this.splitContainer1.Dock = System.Windows.Forms.DockStyle.Bottom;
-            this.splitContainer1.Location = new System.Drawing.Point(0, 192);
+            this.splitContainer1.IsSplitterFixed = true;
+            this.splitContainer1.Location = new System.Drawing.Point(8, 186);
             this.splitContainer1.Name = "splitContainer1";
             // 
             // splitContainer1.Panel1
@@ -101,17 +102,17 @@ namespace SimpleNotes
             // splitContainer1.Panel2
             // 
             this.splitContainer1.Panel2.Controls.Add(this.CancelNoteButton);
-            this.splitContainer1.Size = new System.Drawing.Size(347, 36);
-            this.splitContainer1.SplitterDistance = 224;
+            this.splitContainer1.Size = new System.Drawing.Size(335, 36);
+            this.splitContainer1.SplitterDistance = 216;
             this.splitContainer1.TabIndex = 3;
             // 
             // groupBox2
             // 
             this.groupBox2.Controls.Add(this.NoteContentTextBox);
             this.groupBox2.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.groupBox2.Location = new System.Drawing.Point(0, 42);
+            this.groupBox2.Location = new System.Drawing.Point(8, 45);
             this.groupBox2.Name = "groupBox2";
-            this.groupBox2.Size = new System.Drawing.Size(347, 150);
+            this.groupBox2.Size = new System.Drawing.Size(335, 141);
             this.groupBox2.TabIndex = 4;
             this.groupBox2.TabStop = false;
             this.groupBox2.Text = "Содержимое заметки";
@@ -121,7 +122,8 @@ namespace SimpleNotes
             this.NoteContentTextBox.Dock = System.Windows.Forms.DockStyle.Fill;
             this.NoteContentTextBox.Location = new System.Drawing.Point(3, 16);
             this.NoteContentTextBox.Name = "NoteContentTextBox";
-            this.NoteContentTextBox.Size = new System.Drawing.Size(341, 131);
+            this.NoteContentTextBox.ScrollBars = System.Windows.Forms.RichTextBoxScrollBars.ForcedVertical;
+            this.NoteContentTextBox.Size = new System.Drawing.Size(329, 122);
             this.NoteContentTextBox.TabIndex = 0;
             this.NoteContentTextBox.Text = "";
             // 
@@ -129,12 +131,13 @@ namespace SimpleNotes
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(347, 228);
+            this.ClientSize = new System.Drawing.Size(351, 230);
             this.Controls.Add(this.groupBox2);
             this.Controls.Add(this.splitContainer1);
             this.Controls.Add(this.groupBox1);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedToolWindow;
             this.Name = "CreateNoteForm";
+            this.Padding = new System.Windows.Forms.Padding(8, 3, 8, 8);
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterParent;
             this.Text = "Создать заметку";
             this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.CreateNoteForm_FormClosing);

@@ -18,23 +18,19 @@ namespace SimpleNotes
         {
             InitializeComponent();
             TextContainer = cont;
-            this.Editing = editing;
+            Editing = editing;
             // Если форма открыта для редактирования,
             // в контейнере уже будет текст
             if (editing)
             {
-                this.Text = $"Редактирование - {cont[0]}";
+                Text = $"Редактирование - {cont[0]}";
                 NoteNameTextBox.ReadOnly = true;
                 NoteNameTextBox.Text = cont[0];
                 NoteContentTextBox.Text = cont[1];
             }
         }
 
-        private void cancelNoteButton_Click(object sender, EventArgs e)
-        {
-            this.Close();
-            // ...Управление переходит в CreateNoteForm_FormClosing
-        }
+        private void cancelNoteButton_Click(object sender, EventArgs e) => Close();// ...Управление переходит в CreateNoteForm_FormClosing
 
         private void createNoteButton_Click(object sender, EventArgs e)
         {
@@ -69,28 +65,25 @@ namespace SimpleNotes
             // Создаём заметку в виде файла
             // Или перезаписываем при редактировании
             File.WriteAllText($"{MainForm.NotesFolder.FullName}\\{TextContainer[0]}.snf", TextContainer[1]);
-            this.DialogResult = DialogResult.OK;
-            this.Close();
+            DialogResult = DialogResult.OK;
+            Close();
         }
 
         private void CreateNoteForm_FormClosing(object sender, FormClosingEventArgs e)
         {
             // Выводим диалог, нужно ли отменять создание заметки
             // Только если одно из полей пустое ИЛИ мы ещё не закончили создание записи
-            if ((NoteNameTextBox.TextLength != 0 || NoteContentTextBox.TextLength != 0) && this.DialogResult != DialogResult.OK)
+            if ((NoteNameTextBox.TextLength != 0 || NoteContentTextBox.TextLength != 0) && DialogResult != DialogResult.OK)
                 if (DialogResult.No == MessageBox.Show("Отменить создание заметки?\nВведённые данные не сохранятся", "Подтверждение", MessageBoxButtons.YesNo, MessageBoxIcon.Warning))
                 {
                     e.Cancel = true;
                 }
             // Если оба поля пусты / мы получили подверждение / закончили создание записи
             // продолжаем закрытие окна
-            if (this.DialogResult != DialogResult.OK)
-                this.DialogResult = DialogResult.Cancel;
+            if (DialogResult != DialogResult.OK)
+                DialogResult = DialogResult.Cancel;
         }
 
-        private void NoteNameTextBox_TextChanged(object sender, EventArgs e)
-        {
-            groupBox1.Text = $"Название заметки ({NoteNameTextBox.TextLength}/24)";
-        }
+        private void NoteNameTextBox_TextChanged(object sender, EventArgs e) => groupBox1.Text = $"Название заметки ({NoteNameTextBox.TextLength}/24)";
     }
 }

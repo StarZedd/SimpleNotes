@@ -41,7 +41,7 @@ namespace SimpleNotes
             // Массив из двух строк
             // Первая - Заголовок
             // Вторая - Содержимое заметки
-            string[] container = new string[2]{"", ""};
+            string[] container = new string[2] { "", "" };
             // Создаём форму для создания новой заметки
             // Код останавливает выполнение до закрытия окна
             DialogResult res = new CreateNoteForm(container).ShowDialog();
@@ -67,7 +67,7 @@ namespace SimpleNotes
             // Показываем что заметка выбрана и применяем её свойства
             Button noteButton = (Button)sender;
             SelectedNote = noteButton;
-            this.Text = $"SimpleNotes | {noteButton.Text}";
+            Text = $"SimpleNotes | {noteButton.Text}";
             NoteGroupBox.Text = $"Заметка \"{noteButton.Text}\"";
             NoteTextBox.Text = noteButton.Tag.ToString();
             EditNoteButton.Enabled = true;
@@ -86,7 +86,7 @@ namespace SimpleNotes
                 SelectedNote.Dispose();
                 // После чего снова ставим состояние на "Заметка не выбрана"
                 SelectedNote = null;
-                this.Text = $"SimpleNotes";
+                Text = $"SimpleNotes";
                 NoteGroupBox.Text = "Заметка не выбрана";
                 NoteTextBox.Text = "";
                 EditNoteButton.Enabled = false;
@@ -98,10 +98,10 @@ namespace SimpleNotes
 
         private void EditNoteButton_Click(object sender, EventArgs e)
         {
-            string[] container = new string[2] 
-            { 
-                SelectedNote.Text, 
-                SelectedNote.Tag.ToString() 
+            string[] container = new string[2]
+            {
+                SelectedNote.Text,
+                SelectedNote.Tag.ToString()
             };
             // Создаём форму для редактирования заметки
             // Код останавливает выполнение до закрытия окна
